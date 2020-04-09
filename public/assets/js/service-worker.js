@@ -3,6 +3,7 @@ const urlsToCache = [
 	'/layout',
 	'/images/icons/App-icon.png',
 	'/css/layout.css',
+	"/css/bootstrap/bootstrap.min.css",
 	'/js/manifest.json'
 	
 

@@ -10,7 +10,9 @@ CACHE:
 
 # App Icons
 images/icons/App-icon.png
-
+/css/layout.css
+/js/manifest.json
+/css/bootstrap/bootstrap.min.css
 
 
 
