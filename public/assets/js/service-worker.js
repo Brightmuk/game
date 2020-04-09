@@ -1,10 +1,9 @@
 const CACHE_NAME = 'game-cache';
 const urlsToCache = [
 	'/layout',
-	'public/assets/images/icons/App-icon.png',
-	'public/assets/css/layout.css/',
-	'public/assets/js/manifest.json'
-
+	'/images/icons/App-icon.png',
+	'/css/layout.css',
+	'/js/manifest.json'
 	
 
 ];
