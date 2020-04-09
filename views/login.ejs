@@ -1,0 +1,32 @@
+<%- include('partials/layout.ejs') -%>
+
+<div class="container">
+    <% if (message != '') { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+    <div class="col-3"></div>
+    <div class="col-8">
+<form class="form-signin" action="/logsin" method="post" enctype="multipart/form-data">
+    
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+    <label for="input username" class="sr-only">Username</label>
+    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+   </div>
+   </div>
+   <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+   </div>
+   </div>
+    <br/>
+     
+    <button class="btn btn-sm btn-primary" type="submit">Sign In</button>
+    <small>Dont have an account.<a href="/signup">Signup</a></small>
+  </form>
+  <div class="col-1"></div>
+  </div>
+</div>
+ 

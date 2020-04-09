@@ -8,11 +8,13 @@ const app = express();
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const session = require('express-session');
-const createPwa = require('create-pwa')
+const createPwa = require('create-pwa');
+const ejs = require('ejs');
+const expressSession = require('express-session');
+const morgan=require('morgan');
+const LocalStrategy=require('passport-local').strategy;
 
 
-
-const {getHomePage,layout} = require('./routes/index');
 
 const port = 8000;
 
@@ -50,8 +52,8 @@ app.use(cookieParser())
 
 
 // routes for the app
-app.get('/' ,getHomePage);
-app.get('/layout',layout);
+require('./routes.js')(app,passport);
+
 
 // set the app to listen on the port
 app.listen(port, () => {
