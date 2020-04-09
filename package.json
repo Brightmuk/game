@@ -1,0 +1,31 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "game app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test-app",
+    "pwa": "create-pwa --icon=\"icons/Bright-logo4.png\" --launch=\"icons/Bright-logo4.png\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/brightmuk/game"
+  },
+  "keywords": [
+    "gaming"
+  ],
+  "author": "brightmuk",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "create-pwa": "^2.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.2",
+    "express-session": "^1.17.0",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1"
+  }
+ 
+}

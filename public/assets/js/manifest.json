@@ -1,0 +1,22 @@
+{
+	"lang": "en",
+	"dir": "ltr",
+	"name": "game",
+	"short_name": "game",
+	"description": "",
+	"theme_color": "#000",
+	"background_color": "#000",
+	"display": "standalone",
+	"orientation": "portrait",
+	"scope": "/",
+	"start_url": "/",
+	"icons": [
+	{
+		"src": "../images/icons/Bright-logo5.png",
+		
+		"type": "image/png"
+	}
+
+],
+	"splash_pages": null
+}

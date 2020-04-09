@@ -1,0 +1,45 @@
+.navbar{
+    background-color: black;
+}
+a{
+    margin:0;
+    padding:0
+}
+*{
+    background-color:black;
+    
+}
+.logo{
+    font-size:10px;
+
+}
+#capt{
+    font-size:30px
+} 
+#login,#about,#contact{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+#about:hover,#contact:hover{
+   opacity:0.8
+   
+}
+.login{
+    border-radius:20px;
+    border:1px solid rgb(47, 255, 64);
+    background-color:black;
+    color:white;
+    padding:10px;
+    padding-left:20px;
+    padding-right:20px;
+    transition:0.5s;
+}
+.login:focus{
+opacity:0.1;
+background-color: black;
+}
+.login:hover{
+    opacity:0.9;
+    background-color: black;
+}

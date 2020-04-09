@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" manifest="game.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="manifest" href="js/manifest.json" />
+    <link rel="stylesheet" type="text/css" href="css/layout.css" />
+    <title>Muk games</title>
+</head>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('js/service-worker.js').then(
+            registration => {
+                console.log(`ServiceWorker registration successful with scope: ${registration.scope}`);
+            },
+            error => {
+                console.log(`ServiceWorker registration failed: ${error}`);
+            }
+        );
+    });
+}
+</script>
+
+<body>
+<div class="page-wrapper">
+    <nav class="navbar ">
+        <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
+       
+        <a id="about" href="/">About</a>
+        <a id="contact" href="/">Contact</a>
+        <a id="login"  href="/">
+            <button class="btn btn-success login">login</button>
+        </a>
+        
+       
+    </nav>
+   
