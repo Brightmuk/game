@@ -28,13 +28,15 @@ module.exports={
                 // console.log('The solution is: ', results);
                 if(result.length >0){
                   if(result[0].password == enteredPassword){
-                      res.cookie('isLoggedin',{loggedin:true})
-                      if(req.cookies){
-                        console.log('cookie in')
-                        console.log(req.cookies.isLoggedin.loggedin)
-                      }   else{
-                        console.log('no cookie')
-                      }   
+                      req.session.user=result[0];
+                      console.log(req.session.user)
+                    //   res.cookie('isLoggedin',{loggedin:true})
+                    //   if(req.cookies){
+                    //     console.log('cookie in')
+                    //     console.log(req.cookies.isLoggedin.loggedin)
+                    //   }   else{
+                    //     console.log('no cookie')
+                    //   }   
                     // if(req.body.remember){
                        
                     //     req.session.cookie.maxAge = 1000 * 60 *3;

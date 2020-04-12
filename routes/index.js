@@ -1,3 +1,5 @@
+function isLoggedIn(){
+}
 module.exports = {
 
     

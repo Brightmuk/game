@@ -50,7 +50,12 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(cookieParser())
 
-
+app.use(session({
+    cookieName:'session',
+    secret:'mukthebeast',
+    duration:30*60*1000,
+    activeDuration:5*60*1000
+}));
 // routes for the app
 require('./routes.js')(app,passport);
 
