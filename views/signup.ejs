@@ -5,30 +5,29 @@
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
 <form class="form-sigup" action="/signsup" method="post" enctype="multipart/form-data">
-    <h2 class="form-signin-heading">Please sign up</h2>
-    <div class="form-row">
-        <div class="form-group col-md-6">
+    <h3 class="form-signin-heading">Sign up</h3>
+   
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
-    </div>
-    <div class="form-group col-md-6">
+    <input type="email" id="inputEmail" name="email" class="form-ctrl" placeholder="Email address" required autofocus>
+    
+   
     <label for="inputUsername" class="sr-only">Username</label>
-    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required>
-   </div>
-   </div>
-   <div class="form-row">
-    <div class="form-group col-md-6">
+    <input type="text" id="inputUsername" name="username" class="form-ctrl" placeholder="Username" required>
+  
+  
+  
+   
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-   </div>
-   <div class="form-group col-md-6">
+    <input type="password" id="inputPassword" name="password" class="form-ctrl" placeholder="Password" required>
+  
+  
     <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-    <input type="password" id="inputConfirmPassword" name="confirmationPassword" class="form-control" placeholder="Confirm Password" required>
-   </div>
-   </div>
+    <input type="password" id="inputConfirmPassword" name="confirmationPassword" class="form-ctrl" placeholder="Confirm Password" required>
+  
+<br>
     <br/>
    
-    <button class="btn btn-sm btn-primary" type="submit">Signup</button>
+    <button class="btn btn-sm btn-primary" type="submit">Signup</button><br>
     <small>Have an account.<a href="/login">Signin</a></small>
   </form>
   </div>

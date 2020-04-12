@@ -2,8 +2,9 @@ module.exports = {
 
     
     getHomePage: (req, res) => {
-                
+         
         res.render('index.ejs', {
+        
           title: 'Welcome muk games'
         
          })

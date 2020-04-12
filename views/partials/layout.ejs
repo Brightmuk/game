@@ -31,19 +31,33 @@ if ('serviceWorker' in navigator) {
         );
     });
 }
+$(function(){
+  var str = '#len'; //increment by 1 up to 1-nelemnts
+  $(document).ready(function(){
+    var i, stop;
+    i = 1;
+    stop = 4; //num elements
+    setInterval(function(){
+      if (i > stop){
+        return;
+      }
+      $('#len'+(i++)).toggleClass('bounce');
+    }, 500)
+  });
+});
 </script>
 
 <body>
 <div class="page-wrapper">
-    <nav class="navbar ">
+    <nav class="navbar nav-default">
         <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
        
-        <a id="about" href="/">About</a>
+        <a id="about"  href="/">About</a>
         <a id="contact" href="/">Contact</a>
         <a id="login"  href="/login">
-            <button class="btn btn-success login">login</button>
+          login
         </a>
-        
-       
+         
     </nav>
-   
+  </div> 
+  </body>

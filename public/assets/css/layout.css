@@ -1,13 +1,31 @@
-.navbar{
-    background-color: black;
-}
-a{
-    margin:0;
-    padding:0
-}
 *{
-    background-color:black;
-    
+  color:white
+}
+nav{
+  background-color:black;
+ opacity:1;
+ position: fixed;
+
+}
+nav a{
+    margin:0%;
+    padding:0%;
+    color:white;
+    opacity:1;
+    transition:0.4s
+}
+nav a:hover{
+  color:whitesmoke;
+  text-decoration: none;
+  opacity:0.5;
+  border-bottom:1px solid green
+}
+
+body{
+  background-color: black;
+ 
+  background-size:100%;
+
 }
 .logo{
     font-size:10px;
@@ -16,30 +34,35 @@ a{
 #capt{
     font-size:30px
 } 
-#login,#about,#contact{
-    color:white;
-    text-decoration:none;
-    transition:0.3s;
+#login{
+  background-color: black;
+  color:white;
+  border:1px solid white;
+  padding:10px;
+transition:0.4s
 }
-#about:hover,#contact:hover{
-   opacity:0.8
-   
+
+
+
+h3{
+  color:white
 }
-.login{
-    border-radius:20px;
-    border:1px solid rgb(47, 255, 64);
-    background-color:black;
-    color:white;
-    padding:10px;
-    padding-left:20px;
-    padding-right:20px;
-    transition:0.5s;
+form{
+  background-color: rgb(7, 7, 7);
+ padding:50px;
+ opacity:.8;
+ margin-top:10%;
 }
-.login:focus{
-opacity:0.1;
-background-color: black;
+.form-ctrl{
+  color:white;
+  background-color: black;
+ padding:10px;
+  border:0px;
+  border-bottom:1px solid white
 }
-.login:hover{
-    opacity:0.9;
-    background-color: black;
+.form-ctrl:focus{
+  border:0px;
+}
+label{
+  font-size:3px;
 }
