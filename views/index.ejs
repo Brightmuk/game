@@ -1,4 +1,11 @@
 <%- include('partials/layout.ejs') -%>
 <div class="container">
     <h3 class="text-center">Game zone</h3>
+    <form id="send-container">
+        <input type="text" id="message-input" class="form-ctrl">
+        <button  type="submit" id="send-button" class="btn btn-primary">send</button>
+
+    </form>
+    <script defer src="http://localhost:6000/socket.io/socket.io.js"></script>
+  
 </div>

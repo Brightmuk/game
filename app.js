@@ -13,8 +13,11 @@ const ejs = require('ejs');
 const expressSession = require('express-session');
 const morgan=require('morgan');
 const LocalStrategy=require('passport-local').strategy;
+const io = require("socket.io")(6000)
 
-
+io.on('connection',socket=>{
+    socket.emit('chat-message','Online')
+})
 
 const port = 8000;
 
@@ -54,7 +57,7 @@ app.use(session({
     cookieName:'session',
     secret:'mukthebeast',
     duration:30*60*1000,
-    activeDuration:5*60*1000
+    activeDuration:10*60*1000
 }));
 // routes for the app
 require('./routes.js')(app,passport);
