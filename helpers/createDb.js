@@ -33,6 +33,17 @@ con.query(
 if (err) throw err;
 console.log("Table messages created");
 });
+const dateTime = require('node-datetime');
+let dt = dateTime.create().format('y-m-d H:M:S');
+let user_id=2;
+
+let receiver_id=1;
+con.query(
+  "INSERT INTO `chats` (user_Id, receiver_id, dateTime) VALUES ('"+user_id +"','"+receiver_id +"', '"+ dt+"') "
+  , function (err, result) {
+if (err) throw err;
+console.log(result[0]);
+});
 
 
   });

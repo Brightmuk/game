@@ -1,7 +1,9 @@
+const dateTime = require('node-datetime');
+const url = require('url'); 
 
 module.exports = {
     chatsPage: (req, res) => {
-        if(req.session.user){
+       
         message=''
         user_id=req.params.user_id;
         let getChatsQuery = "SELECT * FROM `chats` WHERE user_Id= '"+ user_id +"' AND receiver_id='"+ user_id+"'";
@@ -27,12 +29,10 @@ module.exports = {
            
         
        
-    }else{
-        res.redirect('/login')
-      }
+  
      },
      usersPage: (req, res) => {
-        if(req.session.user){
+       
         message=''
         user_id=req.params.user_id;
         let usersQuery = "SELECT * FROM `users`";
@@ -56,29 +56,43 @@ module.exports = {
             }
         })
        
-    }else{
-        res.redirect('/login')
-      }
+ 
      },
 newChat:(req, res) => {
-    let user=req.session.user
-    console.log(user)
-    let dt='1/2/2018'
+   
+    let user_id=req.session.user.user_id
+    console.log(user_id)
+    let receiver_id=req.params.receiver_id
+    console.log(receiver_id)
+    let dt = dateTime.create().format('y-m-d H:M:S');
     console.log(dt)
-    let newChatQuery="INSERT INTO `chats` SET `user_Id`= '"+user +"', `dateTime`= '"+ dt+"' ";
-    db.query(newChatQuery, (err, result) => {
-        if (err) {
-           console.log('Eror occured as:'+err);
+    let ifChatExistQuery="SELECT * FROM `chats` WHERE user_Id='"+user_id+"' AND receiver_id='"+receiver_id+"' ";
+    let newChatQuery="INSERT INTO `chats` (user_Id, receiver_id, dateTime) VALUES ('"+user_id +"','"+receiver_id +"', '"+ dt+"') ";
+    db.query(ifChatExistQuery, (err, result) => {
+        if (err) throw err;
+       console.log(result.length)
+        if (result.length==0){
+            db.query(newChatQuery, (err, result) => {
+                if (err) {
+                   console.log('Eror occured as:'+err);
+                }
+               
+                res.redirect('/');
+              
+            }) 
+        }else{
+           
+
+            res.redirect('/signup');
         }
-            console.log('chat created')
-            res.redirect('/')
         
     })
+   
 
 },
 
 oneChat: (req, res) => {
-    if(req.session.user){
+   
     user=req.session.user.user_id
     message=""
      res.render('index.ejs', {
@@ -86,9 +100,7 @@ oneChat: (req, res) => {
        title: 'Welcome muk games',
       message:message
       })
-    }else{
-      res.redirect('/login')
-    }
+   
   
 
 },

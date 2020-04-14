@@ -3,7 +3,7 @@ module.exports = {
 
     
     getHomePage: (req, res) => {
-         if(req.session.user){
+        
          user=req.session.user.user_id
        
          message=""
@@ -12,9 +12,7 @@ module.exports = {
             title: 'Welcome muk games',
            message:message
            })
-         }else{
-           res.redirect('/login')
-         }
+        
        
  
     },

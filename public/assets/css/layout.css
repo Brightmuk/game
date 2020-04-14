@@ -95,3 +95,9 @@ label{
 .user h5{
   color:rgb(23, 23, 255)
 }
+a:focus{
+  text-decoration:none
+}
+a:hover{
+  text-decoration:none
+}

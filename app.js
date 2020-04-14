@@ -54,6 +54,7 @@ app.use(passport.session())
 app.use(cookieParser())
 
 app.use(session({
+    cookie:{path:'/'},
     cookieName:'session',
     secret:'mukthebeast',
     duration:30*60*1000,
@@ -67,5 +68,6 @@ require('./routes.js')(app,passport);
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
+console.log(session.Cookie)
 //static files
 app.use(express.static(path.join(__dirname, '/public/assets')));
