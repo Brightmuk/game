@@ -4,15 +4,13 @@ module.exports = {
     
     getHomePage: (req, res) => {
          if(req.session.user){
-         
-
-          socket.on('chat-message',data=>{
-              console.log(data)
-          })
+         user=req.session.user.user_id
+       
+         message=""
           res.render('index.ejs', {
-        
-            title: 'Welcome muk games'
-          
+            user_id:user,
+            title: 'Welcome muk games',
+           message:message
            })
          }else{
            res.redirect('/login')

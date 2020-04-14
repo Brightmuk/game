@@ -47,22 +47,51 @@ transition:0.4s
 h3{
   color:white
 }
-form{
+.form-signin,.form-sigup{
   background-color: rgb(7, 7, 7);
  padding:50px;
  opacity:.8;
  margin-top:10%;
+ 
 }
+#send-container{
+ 
+ margin:0;
+ width:100%;
+  position:fixed;
+  bottom:3px;
+  padding:2px
+}#message-input{
+width:75%;
+border-bottom:1px solid white
+}
+#send-button{
+
+margin:0
+}
+
 .form-ctrl{
   color:white;
   background-color: black;
  padding:10px;
   border:0px;
-  border-bottom:1px solid white
+ 
+  -webkit-box-shadow: -1px 0px 58px -43px rgba(255,255,255,1);
+-moz-box-shadow: -1px 0px 58px -43px rgba(255,255,255,1);
+box-shadow: -1px 0px 58px -43px rgba(255,255,255,1);
 }
 .form-ctrl:focus{
   border:0px;
 }
 label{
   font-size:3px;
+}
+.user{
+  padding:10px;
+ border-bottom: 0.01em solid rgb(160, 160, 160);
+  margin:3px;
+
+}
+.user h5{
+  color:rgb(23, 23, 255)
 }

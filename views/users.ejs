@@ -1,0 +1,19 @@
+<%- include('partials/layout.ejs') -%>
+
+<div class="container">
+    <% if (message != '') { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+    <h3 class="text-center">Users</h3>
+ 
+    <% users.forEach((user, index) => { %>
+        <a href="new chat">
+        <div class="user">
+        <h5><%= user.user_name %></h5>
+        <span><%= user.email %></span>
+        </div>
+       
+        </a>
+        
+        <% }) %>
+</div>
