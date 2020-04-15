@@ -58,7 +58,7 @@ module.exports = {
        
  
      },
-newChat:(req, res) => {
+newChat:(req, res,next) => {
    
     let user_id=req.session.user.user_id
     console.log(user_id)
@@ -68,6 +68,7 @@ newChat:(req, res) => {
     console.log(dt)
     let ifChatExistQuery="SELECT * FROM `chats` WHERE user_Id='"+user_id+"' AND receiver_id='"+receiver_id+"' ";
     let newChatQuery="INSERT INTO `chats` (user_Id, receiver_id, dateTime) VALUES ('"+user_id +"','"+receiver_id +"', '"+ dt+"') ";
+   
     db.query(ifChatExistQuery, (err, result) => {
         if (err) throw err;
        console.log(result.length)
@@ -76,14 +77,21 @@ newChat:(req, res) => {
                 if (err) {
                    console.log('Eror occured as:'+err);
                 }
-               
-                res.redirect('/');
+                db.query(ifChatExistQuery, (err, result) => {
+                    if (err) {
+                       console.log('Eror occured as:'+err);
+                    }
+                    chat_id=result[0].chat_id;
+                    console.log(chat_id)
+                    res.redirect('/chat'+chat_id)
+                  
+                }) 
               
             }) 
         }else{
-           
-
-            res.redirect('/signup');
+            chat_id=result[0].chat_id;
+            console.log(chat_id)
+            res.redirect('/chat'+chat_id)
         }
         
     })
@@ -95,13 +103,12 @@ oneChat: (req, res) => {
    
     user=req.session.user.user_id
     message=""
-     res.render('index.ejs', {
+     res.render('singlechat.ejs', {
        user_id:user,
        title: 'Welcome muk games',
       message:message
       })
    
-  
 
 },
     

@@ -54,7 +54,7 @@ app.use(passport.session())
 app.use(cookieParser())
 
 app.use(session({
-    cookie:{path:'/'},
+    cookie:{path:''},
     cookieName:'session',
     secret:'mukthebeast',
     duration:30*60*1000,
