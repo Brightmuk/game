@@ -100,15 +100,32 @@ newChat:(req, res,next) => {
 },
 
 oneChat: (req, res) => {
-   
+    let message='';
+    let chat_id=req.params.chat_id;
+    console.log(chat_id)
+    let chatQuery="SELECT * FROM `chats` WHERE chat_Id='"+chat_id+"'";
+    
     user=req.session.user.user_id
-    message=""
-     res.render('singlechat.ejs', {
-       user_id:user,
-       title: 'Welcome muk games',
-      message:message
-      })
-   
+    db.query(chatQuery, (err, result) => {
+        if (err) {
+           console.log('Eror occured as:'+err);
+        }
+        let userQuery="SELECT * FROM `users` WHERE user_id='"+result[0].receiver_id+"'";
+        db.query(userQuery, (err, result) => {
+            if (err) {
+               console.log('Eror occured as:'+err);
+            }
+            chat_id=result[0].chat_id;
+            res.render('singlechat.ejs', {
+                receiver:result[0],
+                chat:result[0],
+               message:message
+               })
+        })
+       
+      
+    }) 
+     
 
 },
     

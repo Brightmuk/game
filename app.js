@@ -14,6 +14,7 @@ const expressSession = require('express-session');
 const morgan=require('morgan');
 const LocalStrategy=require('passport-local').strategy;
 const io = require("socket.io")(6000)
+const FileStore = require('session-file-store')(session)
 
 io.on('connection',socket=>{
     socket.emit('chat-message','Online')
@@ -51,15 +52,15 @@ app.use(fileUpload()); // configure fileupload
 
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(cookieParser())
+//secret cookie signing
+app.use(cookieParser('dkjml-9i6j-2738'))
 
 app.use(session({
-    cookie:{path:''},
-    cookieName:'session',
-    secret:'mukthebeast',
-    httpOnly: false,
-    duration:30*60*1000,
-    activeDuration:10*60*1000
+    name:'session-id',
+    secret:'38cjkn20kmksalcnln23',
+    saveUninitialized:false,
+    resave:false,
+    store:new FileStore()
 }));
 // routes for the app
 require('./routes.js')(app,passport);
@@ -69,6 +70,6 @@ require('./routes.js')(app,passport);
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
-console.log(session.Cookie)
+
 //static files
 app.use(express.static(path.join(__dirname, '/public/assets')));
