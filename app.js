@@ -57,6 +57,7 @@ app.use(session({
     cookie:{path:''},
     cookieName:'session',
     secret:'mukthebeast',
+    httpOnly: false,
     duration:30*60*1000,
     activeDuration:10*60*1000
 }));
