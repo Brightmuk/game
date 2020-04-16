@@ -4,7 +4,8 @@ module.exports = {
     
     getHomePage: (req, res) => {
         
-         user=req.session.user.user_id
+        //  user=req.session.user.user_id
+        user=req.cookies.user.user_id
        
          message=""
           res.render('index.ejs', {

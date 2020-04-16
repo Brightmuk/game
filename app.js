@@ -55,13 +55,13 @@ app.use(passport.session())
 //secret cookie signing
 app.use(cookieParser('dkjml-9i6j-2738'))
 
-app.use(session({
-    name:'session-id',
-    secret:'38cjkn20kmksalcnln23',
-    saveUninitialized:false,
-    resave:false,
-    store:new FileStore()
-}));
+// app.use(session({
+//     name:'session-id',
+//     secret:'38cjkn20kmksalcnln23',
+//     saveUninitialized:false,
+//     resave:false,
+   
+// }));
 // routes for the app
 require('./routes.js')(app,passport);
 
