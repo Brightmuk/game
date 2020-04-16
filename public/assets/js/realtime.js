@@ -9,7 +9,6 @@ socket.on("message", addMessages)
             url:'http://localhost:8000/send',
             data:{
                sent_message:$("#message").val(),
-               receiver_id:$("#receiver_id").val(),
                chat_id:$("#chat_id").val(),
                
             },

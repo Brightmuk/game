@@ -18,7 +18,7 @@ module.exports =function(app,passport){
     app.get('/' ,isLoggedIn,getHomePage);
     app.get('/chats',isLoggedIn,chatsPage);
     app.get('/newchat/:receiver_id',isLoggedIn,newChat);
-    app.get('/chat:chat_id',isLoggedIn,oneChat);
+    app.get('/chat:chat_id:receiver_id',isLoggedIn,oneChat);
     app.get('/users',isLoggedIn,usersPage);
     app.post('/send',isLoggedIn,sendMessage);
     app.get('/messages:chat_id',isLoggedIn,getMessages)

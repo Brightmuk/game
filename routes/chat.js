@@ -88,7 +88,7 @@ newChat:(req, res,next) => {
                         }
                         chat_id=result_3[0].chat_id;
                         console.log('New chat is '+chat_id)
-                        res.redirect('/chat'+chat_id)
+                        res.redirect('/chat'+chat_id+receiver_id)
                       
                     }) 
                
@@ -96,7 +96,7 @@ newChat:(req, res,next) => {
                }else{
                 chat_id=result_b[0].chat_id;
                 console.log('Chat at '+chat_id)
-                res.redirect('/chat'+chat_id)
+                res.redirect('/chat'+chat_id+receiver_id)
             }
                
             }) 
@@ -105,7 +105,7 @@ newChat:(req, res,next) => {
         }else{
             chat_id=result_1[0].chat_id;
             console.log('Chat at '+chat_id)
-            res.redirect('/chat'+chat_id)
+            res.redirect('/chat'+chat_id+receiver_id)
         }
         
     })
@@ -116,7 +116,7 @@ newChat:(req, res,next) => {
 oneChat: (req, res) => {
     let message='';
     let chat_id=req.params.chat_id;
-   
+    let receiver_id=req.params.receiver_id;
     let chatQuery="SELECT * FROM `chats` WHERE chat_Id='"+chat_id+"'";
     let getMessagesQuery="SELECT * FROM `messages` WHERE chat_Id='"+chat_id+"'";
     user=req.cookies.user.user_id
@@ -124,7 +124,7 @@ oneChat: (req, res) => {
         if (err) {
            console.log('Eror occured as:'+err);
         }
-        let userQuery="SELECT * FROM `users` WHERE user_id='"+result_1[0].receiver_id+"'";
+        let userQuery="SELECT * FROM `users` WHERE user_id='"+receiver_id+"'";
         db.query(userQuery, (err, result_2) => {
             if (err) {
                console.log('Eror occured as:'+err);
@@ -153,8 +153,6 @@ oneChat: (req, res) => {
      sendMessage:(req, res)=>{
          let message = '';
          let sent_message = req.body.sent_message;
-         
-         let receiver_id=req.body.receiver_id;
          let chat_id=req.body.chat_id;
          let user_id=req.cookies.user.user_id
          let dt = dateTime.create().format('y-m-d H:M:S');
