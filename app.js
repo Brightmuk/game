@@ -1,10 +1,12 @@
-const express = require('express');
+var express = require('express');
+var app = express();
+var server = app.listen(8000);
+var io = require('socket.io').listen(server);
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mysql = require('mysql');
 const path = require('path');
-const app = express();
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const session = require('express-session');
@@ -13,13 +15,14 @@ const ejs = require('ejs');
 const expressSession = require('express-session');
 const morgan=require('morgan');
 const LocalStrategy=require('passport-local').strategy;
-const io = require("socket.io")(6000)
+
 const FileStore = require('session-file-store')(session)
 
 io.on('connection',socket=>{
     socket.emit('chat-message','Online')
 })
-
+io.emit('message', 'im testing');
+module.exports={io:"io"}
 const port = 8000;
 
 // create connection to database
@@ -67,9 +70,7 @@ require('./routes.js')(app,passport);
 
 
 // set the app to listen on the port
-app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
-});
+// server.listen(app.get('port'));
 
 //static files
 app.use(express.static(path.join(__dirname, '/public/assets')));

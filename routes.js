@@ -1,6 +1,6 @@
 const {getHomePage,layout} = require('./routes/index');
 const {userLogin,userLoginPage,userSignup,userSignupPage}=require('./routes/authentication')
-const {chatsPage,sendMessage,newChat,oneChat,usersPage}=require('./routes/chat');
+const {chatsPage,sendMessage,newChat,oneChat,usersPage,getMessages}=require('./routes/chat');
 function isLoggedIn(req,res,next){
     if(req.cookies.user){
         next()
@@ -21,4 +21,5 @@ module.exports =function(app,passport){
     app.get('/chat:chat_id',isLoggedIn,oneChat);
     app.get('/users',isLoggedIn,usersPage);
     app.post('/send',isLoggedIn,sendMessage);
+    app.get('/messages:chat_id',isLoggedIn,getMessages)
 }
