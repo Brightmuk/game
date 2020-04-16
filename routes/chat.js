@@ -119,7 +119,7 @@ oneChat: (req, res) => {
     let receiver_id=req.params.receiver_id;
     let chatQuery="SELECT * FROM `chats` WHERE chat_Id='"+chat_id+"'";
     let getMessagesQuery="SELECT * FROM `messages` WHERE chat_Id='"+chat_id+"'";
-    user=req.cookies.user.user_id
+    let user=req.cookies.user
     db.query(chatQuery, (err, result_1) => {
         if (err) {
            console.log('Eror occured as:'+err);
@@ -134,9 +134,10 @@ oneChat: (req, res) => {
                    console.log('Eror occured as:'+err);
                 }
                
-           
+        
             res.render('singlechat.ejs', {
                 receiver:result_2[0],
+                user:user,
                 chat:result_1[0],
                 messages:result_3,
                message:message
@@ -163,7 +164,7 @@ oneChat: (req, res) => {
                  return res.status(500).send(err);
              }
             console.log(result)
-            io.emit('message', req.body);
+            // io.emit('message', req.body);
             
          });
          

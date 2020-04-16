@@ -4,11 +4,26 @@
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
     <h3 class="text-center"><%= receiver.user_name %></h3>
+  
     <div id="messages" class="messages">
+       
         <% messages.forEach((message, index) =>{%>
-        <div class="message"><%=message.text %><small></small></div>
-        <% }) %><br>
-    </div>
+            <% if (message.user_Id!==user.user_id){ %>
+        <div  class="message">
+            <%=message.text %>?
+        </div>
+        <% }else{ %>
+           
+            <div class="my-message">
+                <%=message.text %>...
+            </div>
+            
+            <% } %>
+            <% }) %>
+           
+    </div><br><br>
+  
+  
     <form id="send-container">
         <input id="message" type="text" name="sent_message" class="form-ctrl input-box"placeholder="text" required>
         <input id="chat_id"  style="display:none" value="<%= chat.chat_id %>" name="chat_id">
