@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+// var http = require('http').Server(app);
 var server = app.listen(8000);
 var io = require('socket.io').listen(server);
 const fileUpload = require('express-fileupload');
@@ -18,10 +19,10 @@ const LocalStrategy=require('passport-local').strategy;
 
 const FileStore = require('session-file-store')(session)
 
-io.on('connection',socket=>{
-    socket.emit('chat-message','Online')
-})
-io.emit('message', 'im testing');
+// io.on('connection',socket=>{
+//     socket.emit('chat-message','Online')
+// })
+// io.emit('message', 'im testing');
 module.exports={io:"io"}
 const port = 8000;
 
@@ -70,7 +71,9 @@ require('./routes.js')(app,passport);
 
 
 // set the app to listen on the port
-// server.listen(app.get('port'));
+// var server = http.listen(8000, () => {
+//     console.log('server is running on port', server.address().port);
+//   });
 
 //static files
 app.use(express.static(path.join(__dirname, '/public/assets')));
