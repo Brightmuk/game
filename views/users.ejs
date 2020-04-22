@@ -1,9 +1,12 @@
-<%- include('partials/layout.ejs') -%>
-
-<div class="container">
+<%- include('partials/layout_2.ejs') -%>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div class="container-fluid">
+    <br>
     <% if (message != '') { %>
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
+   
+    <span class="back"><a href="/" ><</a> </span>
     <h3 class="text-center">Users</h3>
  
     <% users.forEach((user, index) => { %>
@@ -16,4 +19,6 @@
         </a>
         
         <% }) %>
+        <i class="fas fa-cloud"></i>
+        <i style="color:white"class="fas fa-car"></i>
 </div>

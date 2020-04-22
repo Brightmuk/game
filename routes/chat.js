@@ -2,36 +2,8 @@ const dateTime = require('node-datetime');
 const url = require('url'); 
 const{io}=require('../app.js')
 module.exports = {
-    chatsPage: (req, res) => {
-       
-        message=''
-        user_id=req.cookies.user.user_id
-        let getChatsQuery = "SELECT * FROM `chats` WHERE user_Id= '"+ user_id +"' AND receiver_id='"+ user_id+"'";
-       
-                    db.query(getChatsQuery , (err, result_2) => {
-                        if (err) {
-                            console.log("error ocurred",err);
-                        }else {
-                            if(result_2.length<0){
-                                message='No chats yet'
-                                res.render('chats.ejs', {
-                                    message:message,
-                                    chats:result_2
-                                    
-                                });
-                            }else{
-                            res.render('chats.ejs', {
-                                message:message,
-                                chats:result_2
-                            });}
-                        }
-                    })
-           
-        
-       
-  
-     },
-     usersPage: (req, res) => {
+ 
+usersPage: (req, res) => {
        
         message=''
         user_id=req.params.user_id;
@@ -58,6 +30,7 @@ module.exports = {
        
  
      },
+
 newChat:(req, res,next) => {
    
     let user_id=req.cookies.user.user_id
@@ -151,13 +124,12 @@ oneChat: (req, res) => {
 
 },
     
-     sendMessage:(req, res)=>{
+sendMessage:(req, res)=>{
          let message = '';
          let sent_message = req.body.sent_message;
          let chat_id=req.body.chat_id;
          let user_id=req.cookies.user.user_id
          let dt = dateTime.create().format('y-m-d H:M:S');
-        
         let sendMessageQuery="INSERT INTO `messages` (text, user_Id, chat_Id, dateTime) VALUES ('"+sent_message +"','"+user_id +"','"+chat_id +"', '"+ dt+"') "
          db.query(sendMessageQuery, (err, result) => {
              if (err) {

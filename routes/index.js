@@ -18,12 +18,23 @@ module.exports = {
  
     },
     layout: (req, res) => {
-          
+      let loggedIn=''
+        if (req.cookies){
+          if(req.cookies.user){
+            loggedIn=true
+          }else{
+            loggedIn=false
+          }
+        }
         res.render('partials/layout.ejs', {
-         
+          loggedIn:loggedIn,
           title: 'Welcome muk games'
         
          })
  
     },
+  logout:(req,res)=>{
+    req.cookies.user.delete()
+    res.redirect('/login')
+  }
 }
