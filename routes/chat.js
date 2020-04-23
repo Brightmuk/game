@@ -1,6 +1,10 @@
 const dateTime = require('node-datetime');
 const url = require('url'); 
-const{io}=require('../app.js')
+var express = require('express');
+var app = express();
+
+var server = require('http').createServer(app)
+var io = require('socket.io').listen(server);
 module.exports = {
  
 usersPage: (req, res) => {
@@ -136,11 +140,11 @@ sendMessage:(req, res)=>{
                  return res.status(500).send(err);
              }
             console.log(result)
-            // io.emit('message', req.body);
+            io.emit('message', req.body);
             
          });
          
-     },
+},
 
 getMessages: (req, res) => {
         let message='';
@@ -157,18 +161,12 @@ getMessages: (req, res) => {
                 if (err) {
                    console.log('Eror occured as:'+err);
                 }
-                db.query(getMessagesQuery, (err, result_3) => {
+                db.query(getMessagesQuery, (err, messages) => {
                     if (err) {
                        console.log('Eror occured as:'+err);
                     }
-                   
-               
-                res.render('singlechat.ejs', {
-                    receiver:result_2[0],
-                    chat:result_1[0],
-                    messages:result_3,
-                   message:message
-                   })
+                
+                   res.send(messages)
                 })
             })
            

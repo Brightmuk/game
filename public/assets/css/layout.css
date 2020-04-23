@@ -99,3 +99,11 @@ a:hover{
   float:left;
   font-size:30px
 }
+.tab{
+  color:white;
+  padding:20px;
+  margin:10px;
+  -webkit-box-shadow: 4px 2px 17px -5px rgba(255,255,255,1);
+-moz-box-shadow: 4px 2px 17px -5px rgba(255,255,255,1);
+box-shadow: 4px 2px 17px -5px rgba(255,255,255,1);
+}

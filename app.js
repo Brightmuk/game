@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
-// var http = require('http').Server(app);
-var server = app.listen(8000);
+
+var server = require('http').createServer(app)
 var io = require('socket.io').listen(server);
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
@@ -11,18 +11,17 @@ const path = require('path');
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const session = require('express-session');
-// const createPwa = require('create-pwa');
 const ejs = require('ejs');
 const expressSession = require('express-session');
 const morgan=require('morgan');
 const LocalStrategy=require('passport-local').strategy;
 
 const FileStore = require('session-file-store')(session)
+io.sockets.on('connection',function(socket){
+    console.log('New user!');
 
-// io.on('connection',socket=>{
-//     socket.emit('chat-message','Online')
-// })
-// io.emit('message', 'im testing');
+
+})
 module.exports={io:"io"}
 const port = 8000;
 
@@ -71,9 +70,9 @@ require('./routes.js')(app,passport);
 
 
 // set the app to listen on the port
-// var server = http.listen(8000, () => {
-//     console.log('server is running on port', server.address().port);
-//   });
+ server.listen(8000, () => {
+    console.log('server is running on port', server.address().port);
+  });
 
 //static files
 app.use(express.static(path.join(__dirname, '/public/assets')));

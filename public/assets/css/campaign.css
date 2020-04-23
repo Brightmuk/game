@@ -1,0 +1,20 @@
+.wheel{
+    position:relative;
+    width:70%;
+    margin:50px;
+    margin-top:0px
+  }
+  a{
+    text-decoration: none;
+    color:white
+  }
+  .spin{
+    width:30%;
+    margin-left:30%
+  }
+  .arrow{
+    width:10%;
+    position:relative;
+    margin-left:45%
+  }
+  

@@ -1,5 +1,6 @@
 <%- include('partials/layout_2.ejs') -%>
 <link rel="stylesheet" href="css/chat.css">
+<script src="/socket.io/socket.io.js"></script>
 <div class="container-fluid">
     <br>
     <% if (message != '') { %>
@@ -14,12 +15,12 @@
         <% messages.forEach((message, index) =>{%>
             <% if (message.user_Id!==user.user_id){ %>
         <div  class="message">
-            <%=message.text %>?
+            <%=message.text %>
         </div>
         <% }else{ %>
            
             <div id="my-message" class="my-message">
-                <%=message.text %>...
+                <%=message.text %>
             </div>
             
             <% } %>
