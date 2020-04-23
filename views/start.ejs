@@ -1,19 +1,19 @@
 <%- include('partials/layout_2.ejs') -%>
-<link rel="stylesheet" src="css/campaign.css">
+<link rel="stylesheet" href="css/campaign.css">
 
 <div class="container">
     <% if (message != '') { %>
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
-    <h3 class="text-center">May the game begin</h3>
+    <h3 class="text-center">Let the games begin</h3>
  <br>
- <img class="arrow"src="images/mine.png">
- <img id="wheel" class="wheel"src="images/spin wheel3.png">
+ <img  class="arrow"src="images/mine.png">
+ <img  id="wheel" class="wheel"src="images/wheel2.png">
  
  <div id="I" class="ball">0</span></div>
 
  <br><br>
  <button class=" spin" onclick="rotation()">Spin</button>
-<script src="start.js"></script>
+<script src="js/start.js"></script>
   
 </div>

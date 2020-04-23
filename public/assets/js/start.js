@@ -28,35 +28,35 @@ function rotation(){
 
     //getting value of result
     if(randomNo<360 && randomNo>324){
-        console.log('got a 10')
-        var result=10
-    }else if(randomNo<324 && randomNo>288){
         console.log('got a 9')
         var result=9
-     }else if(randomNo<288 && randomNo>252){
+    }else if(randomNo<324 && randomNo>288){
         console.log('got a 8')
         var result=8
-     }else if(randomNo<252 && randomNo>216){
+     }else if(randomNo<288 && randomNo>252){
         console.log('got a 7')
         var result=7
-    }else if(randomNo<216 && randomNo>180){
+     }else if(randomNo<252 && randomNo>216){
         console.log('got a 6')
         var result=6
-    }else if(randomNo<180 && randomNo>144){
+    }else if(randomNo<216 && randomNo>180){
         console.log('got a 5')
         var result=5
-    }else if(randomNo<144 && randomNo>108){
+    }else if(randomNo<180 && randomNo>144){
         console.log('got a 4')
         var result=4
-    }else if(randomNo<108 && randomNo>72){
+    }else if(randomNo<144 && randomNo>108){
         console.log('got a 3')
         var result=3
-    }else if(randomNo<72 && randomNo>36){
+    }else if(randomNo<108 && randomNo>72){
         console.log('got a 2')
         var result=2
-    }else if(randomNo<36 && randomNo>0){
+    }else if(randomNo<72 && randomNo>36){
         console.log('got a 1')
         var result=1
+    }else if(randomNo<36 && randomNo>0){
+        console.log('got a 0')
+        var result=0
     }else{console.log('SPin again')}
   
   
