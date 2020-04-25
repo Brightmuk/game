@@ -67,7 +67,14 @@ module.exports={
         let email = req.body.email;
         let password = req.body.password;
         let username = req.body.username;
-
+        let passConfirm = req.body.passconfirm;
+        if(password!==passConfirm){
+            message = 'Passwords do not match';
+            res.render('signup.ejs', {
+                message
+              
+            });
+        }else{
         let usernameQuery = "SELECT * FROM `users` WHERE user_name = '" + username + "'";
         db.query(usernameQuery, (err, result) => {
             if (err) {
@@ -91,4 +98,5 @@ module.exports={
         });
         
     }
+  }
 }

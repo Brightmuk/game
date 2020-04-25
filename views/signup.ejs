@@ -14,16 +14,14 @@
     <label for="inputUsername" class="sr-only">Username</label>
     <input type="text" id="inputUsername" name="username" class="form-ctrl" placeholder="Username" required>
   
-  
-  
    
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" name="password" class="form-ctrl" placeholder="Password" required>
   
   
     <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-    <input type="password" id="inputConfirmPassword" name="confirmationPassword" class="form-ctrl" placeholder="Confirm Password" required>
-  
+    <input  onkeyup="checkPasswordMatch()" type="password" id="inputConfirmPassword" name="passconfirm" class="form-ctrl" placeholder="Confirm Password" required>
+    <span id="match"></span>
 <br>
     <br/>
    
@@ -31,3 +29,23 @@
     <small>Have an account. <a href="/login"> Signin</a></small>
   </form>
   </div>
+  <script>
+      function checkPasswordMatch(){
+       
+        var pass_1=$("#inputPassword").val();
+        var pass_2=$("#inputConfirmPassword").val();
+        if(pass_1!==pass_2){
+            var ele=document.getElementById('match')
+            ele.innerHTML='!'
+            ele.style.color="red"
+           
+        }else{
+            var ele=document.getElementById('match')
+            ele.innerHTML='$'
+            ele.style.color="green"
+        }
+       
+      }
+
+
+  </script>
