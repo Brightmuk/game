@@ -1,23 +1,33 @@
-var socket = io();
-socket.on('message', addMessages)
+var server = "http://localhost:8000";
+var socket = io(server);
+let chat_id=$("#chat_id").val()
+
+socket.emit("join-chat",chat_id)
+
+socket.on("new_message", function (message) {
+	addMessages(message)
+});
+
 
 function addMessages(message){
-    console.log("Message to be added is: " +message)
    $("#messages").append(`
-      <div class="message"> ${message.text} </div>
+      <div class="message"> ${message.sent_message} </div>
       `)
+      window.scrollTo(0,document.body.scrollHeight);
    }
-let chat_id=$("#chat_id").val()
-console.log(chat_id)
-$(() => {
-var socket = io();
-socket.on("message", addMessages)
+
+
+
     $("#send-button").click(()=>{
         event.preventDefault();
         let message={
             sent_message:$("#message").val(),
             chat_id:$("#chat_id").val(),
         }
+        if(message.sent_message.length<1){
+            console.log("No message")
+        }else{
+
         $.ajax({
             type:"post",
             url:'http://localhost:8000/send',
@@ -31,16 +41,17 @@ socket.on("message", addMessages)
                 alert(request.responseText);}
             
         })
+    }
         $('#message').val('');
       
-        window.scrollTo(0,document.body.scrollHeight);
   
     })
     function addMyMessages(message){
-       
+        socket.emit('new_message', message,chat_id)
        $("#messages").append(`
           <div class="my-message"> ${message.sent_message} </div>
           `)
+          window.scrollTo(0,document.body.scrollHeight);
        }  
 
    
@@ -61,4 +72,3 @@ function getMessages(){
     })
  }
 
-})

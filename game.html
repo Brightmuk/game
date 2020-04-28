@@ -5,7 +5,7 @@
 <style>
 canvas {
     border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
+    background-color: black;
 }
 </style>
 </head>
@@ -18,16 +18,16 @@ var myObstacles = [];
 var myScore;
 
 function startGame() {
-    myGamePiece = new component(30, 30, "red", 10, 120);
+    myGamePiece = new component(30, 30, "white", 10, 120);
     myGamePiece.gravity = 0.05;
-    myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+    myScore = new component("30px", "Consolas", "pink", 280, 40, "text");
     myGameArea.start();
 }
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 800;
+        this.canvas.width=350;
         this.canvas.height = 270;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
@@ -95,6 +95,7 @@ function updateGameArea() {
     var x, height, gap, minHeight, maxHeight, minGap, maxGap;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
+           
             return;
         } 
     }
@@ -108,8 +109,8 @@ function updateGameArea() {
         minGap = 50;
         maxGap = 200;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-        myObstacles.push(new component(10, height, "green", x, 0));
-        myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+        myObstacles.push(new component(10, height, "whitesmoke", x, 0));
+        myObstacles.push(new component(10, x - height - gap, "whitesmoke", x, height + gap));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x += -1;
@@ -132,170 +133,15 @@ function accelerate(n) {
 </script>
 <br>
 <button onclick="startGame()">Start</button><br>
-<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
+<button  onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
 <p>Use the ACCELERATE button to stay in the air</p>
 <p>How long can you stay alive?</p>
 
 
-<span id="smoke">
-    <span class="s0"></span>
-    <span class="s1"></span>
-    <span class="s2"></span>
-    <span class="s3"></span>
-    <span class="s4"></span>
-    <span class="s5"></span>
-    <span class="s6"></span>
-    <span class="s7"></span>
-    <span class="s8"></span>
-    <span class="s9"></span>
-</span>
-<h1>
-    <span>P</span>
-    <span>H</span>
-    <span>P</span>
-    <span>C</span>
-    <span>O</span>
-    <span>D</span>
-    <span>E</span>
-    <span>R</span>
-    </h1>
+
   <style>
-*{
-margin: 0;
-padding: 0;
-}
-section{
-height:100vh;
-background: #000;
-}
-section:before{
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-image: linear-gradient(to right, red , yellow,#FF8700, yellow, red);
-mix-blend-mode: color;
-pointer-events: none;
-}
-video{
-object-fit: cover;
-height: 100%;
-width: 100%;
-}
-h1{
-margin: 0;
-padding: 0;
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-width: 100%;
-text-align: center;
-color: #ddd;
-font-size: 5em;
-font-family: sans-serif;
-letter-spacing: 0.2em;
-}
-h1 span{
-display: inline-block;
-animation: animate 1s linear forwards;
-}
-@keyframes animate{
-0%{
-opacity: 0;
-transform: rotateY(90deg);
-filter: blur(10px);
-}
-100%{
-opacity: 1;
-transform: rotateY(0deg);
-filter: blur(0px);
-}
-}
-h1 span:nth-child(1)
-{
-animation-delay:1s;
-}
-h1 span:nth-child(2)
-{
-animation-delay:2s;
-}
-h1 span:nth-child(3)
-{
-animation-delay:2.5s;
-}
-h1 span:nth-child(4)
-{
-animation-delay:3s;
-}
-h1 span:nth-child(5)
-{
-animation-delay:3.5s;
-}
-h1 span:nth-child(6)
-{
-animation-delay:4s;
-}
-h1 span:nth-child(7)
-{
-animation-delay:4.5s;
-}
-h1 span:nth-child(8)
-{
-animation-delay:5s;
-}
 
 
-
-    body {background: #18d0f0}
-
-/* Smoke container */
-
-#smoke {
-	position: absolute;
-	z-index: 3;
-	width: 1px; height: 160px;
-	left: 50%; bottom: 30px;
-}
-
-/* smoke balls */
-
-#smoke span { 
-  display: block;
-	position: absolute;
-	bottom: -35px; left: 50%; margin-left:-20px;
-	height: 0px; width: 0px;
-	border: 35px solid #4b4b4b;
-	border-radius: 35px;
-	left: -14px; opacity: 0;
-	transform: scale(0.2);
-}
-
-/* Smoke animation */
-
-@keyframes smokeL {
-	0%   { transform: scale(0.2) translate(0, 0) }
-	10%  { opacity: 1; transform: scale(0.2) translate(0, -5px) }
-	100% { opacity: 0; transform: scale(1) translate(-20px, -130px) }
-}
-
-@keyframes smokeR {
-	0%   { transform: scale(0.2) translate(0, 0) }
-	10%  { opacity: 1; transform: scale(0.2) translate(0, -5px) }
-	100% { opacity: 0; transform: scale(1) translate(20px, -130px) }
-}
-
-#smoke .s0 { animation: smokeL 10s 0s infinite }
-#smoke .s1 { animation: smokeR 10s 1s infinite }
-#smoke .s2 { animation: smokeL 10s 2s infinite }
-#smoke .s3 { animation: smokeR 10s 3s infinite }
-#smoke .s4 { animation: smokeL 10s 4s infinite }
-#smoke .s5 { animation: smokeR 10s 5s infinite }
-#smoke .s6 { animation: smokeL 10s 6s infinite }
-#smoke .s7 { animation: smokeR 10s 7s infinite }
-#smoke .s8 { animation: smokeL 10s 8s infinite }
-#smoke .s9 { animation: smokeR 10s 9s infinite }  
   </style>
 
 </body>

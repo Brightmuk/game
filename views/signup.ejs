@@ -16,8 +16,8 @@
   
    
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" name="password" class="form-ctrl" placeholder="Password" required>
-  
+    <input onkeyup="checkPassValid()" type="password" id="inputPassword" name="password" class="form-ctrl" placeholder="Password" required>
+    <span id="valid"></span>
   
     <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
     <input  onkeyup="checkPasswordMatch()" type="password" id="inputConfirmPassword" name="passconfirm" class="form-ctrl" placeholder="Confirm Password" required>
@@ -30,8 +30,8 @@
   </form>
   </div>
   <script>
+        
       function checkPasswordMatch(){
-       
         var pass_1=$("#inputPassword").val();
         var pass_2=$("#inputConfirmPassword").val();
         if(pass_1!==pass_2){
@@ -46,6 +46,19 @@
         }
        
       }
-
+      function checkPassValid(){
+        var pass_1=$("#inputPassword").val();
+        
+          if(pass_1.length<8){
+             
+            var ele=document.getElementById('valid')
+            ele.innerHTML='!'
+            ele.style.color="red"
+          }else{
+            var ele=document.getElementById('valid')
+            ele.innerHTML='$'
+            ele.style.color="green"
+          }
+      }
 
   </script>

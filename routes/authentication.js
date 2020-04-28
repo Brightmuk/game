@@ -1,3 +1,4 @@
+//sql injector at pass==> xxx') OR 1 = 1 -- ]
 const passport = require('passport')
 
 module.exports={
@@ -15,7 +16,7 @@ module.exports={
         let message='';
         let username=req.body.username;
         let enteredPassword=req.body.password;
-
+       
         let userQuery="SELECT * FROM  users WHERE user_name= '"+ username +"'";
         db.query(userQuery, (err, result) => {
             if (err) {

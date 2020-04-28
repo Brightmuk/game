@@ -3,8 +3,7 @@ const url = require('url');
 var express = require('express');
 var app = express();
 
-var server = require('http').createServer(app)
-var io = require('socket.io').listen(server);
+
 module.exports = {
  
 usersPage: (req, res) => {
@@ -117,6 +116,7 @@ oneChat: (req, res) => {
                 user:user,
                 chat:result_1[0],
                 messages:result_3,
+                chat_id:chat_id,
                message:message
                })
             })
@@ -140,7 +140,6 @@ sendMessage:(req, res)=>{
                  return res.status(500).send(err);
              }
             console.log(result)
-            io.emit('message', req.body);
             
          });
          
