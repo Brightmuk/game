@@ -100,8 +100,8 @@ module.exports={
             } else {
                 let hashed_pass=hashPassword (password);
 
-                let query = "INSERT INTO `users` (email, password, user_name) VALUES ('" +
-                email + "', '" + hashed_pass + "',  '" + username + "')";
+                let query = "INSERT INTO `users` (email, password, user_name, is_First_Time) VALUES ('" +
+                email + "', '" + hashed_pass + "',  '" + username + "',true)";
             db.query(query, (err, result) => {
                 if (err) {
                     return res.status(500).send(err);
