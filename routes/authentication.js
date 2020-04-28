@@ -1,6 +1,14 @@
 //sql injector at pass==> xxx') OR 1 = 1 -- ]
 const passport = require('passport')
 
+//password hashing
+const bcrypt = require('bcryptjs')
+
+function hashPassword (password) {
+    let hash = bcrypt.hashSync(password, 10);
+    return hash
+  }
+
 module.exports={
 
     userLoginPage: (req, res) => {
@@ -28,7 +36,8 @@ module.exports={
               }else{
                
                 if(result.length >0){
-                  if(result[0].password == enteredPassword){
+                  
+                  if(bcrypt.compareSync(enteredPassword,result[0].password) ){
                      
                       res.cookie("user",result[0])
                       console.log(req.cookies);
@@ -76,6 +85,7 @@ module.exports={
               
             });
         }else{
+       
         let usernameQuery = "SELECT * FROM `users` WHERE user_name = '" + username + "'";
         db.query(usernameQuery, (err, result) => {
             if (err) {
@@ -88,8 +98,10 @@ module.exports={
                   
                 });
             } else {
+                let hashed_pass=hashPassword (password);
+
                 let query = "INSERT INTO `users` (email, password, user_name) VALUES ('" +
-                email + "', '" + password + "',  '" + username + "')";
+                email + "', '" + hashed_pass + "',  '" + username + "')";
             db.query(query, (err, result) => {
                 if (err) {
                     return res.status(500).send(err);

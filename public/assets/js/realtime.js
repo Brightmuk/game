@@ -20,6 +20,7 @@ function addMessages(message){
 
     $("#send-button").click(()=>{
         event.preventDefault();
+
         let message={
             sent_message:$("#message").val(),
             chat_id:$("#chat_id").val(),
@@ -38,7 +39,7 @@ function addMessages(message){
             },
             success: addMyMessages(message),
             error: function (request, status, error) {
-                alert(request.responseText);}
+               console.log(error);}
             
         })
     }
@@ -52,23 +53,8 @@ function addMessages(message){
           <div class="my-message"> ${message.sent_message} </div>
           `)
           window.scrollTo(0,document.body.scrollHeight);
+         
        }  
 
-   
-function getMessages(){
-    $.ajax({
-        type:"GET",
-        url:'http://localhost:8000/messages'+chat_id,
-       
-        success: function(res){
-            console.log(res)
-           res.forEach((message,index)=>{
-               addMessages(message)
-           })
-        },
-        error: function (request, status, error) {
-            alert(request.responseText);}
-        
-    })
- }
+
 

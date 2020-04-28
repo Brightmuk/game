@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mysql = require('mysql');
 const path = require('path');
-const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const session = require('express-session');
 const ejs = require('ejs');
@@ -20,8 +19,8 @@ const FileStore = require('session-file-store')(session)
 chats=[]
 
 io.on('connection',function(socket){
-    console.log('New user!',socket.id);
-    
+    console.log('New user at socket ',socket.id);
+    //user joining chat withtheir socket id
     socket.on("join-chat", function (chat_id,) {
        let chat={
             chat_id:chat_id,
@@ -30,7 +29,8 @@ io.on('connection',function(socket){
        chats.push(chat)
        console.log(chats)
     });
-
+   
+    //message beign broadcasted to specific socket
     socket.on("new_message", function (message,chat_id) {
         console.log(chat_id)
         for(i=0;i<chats.length;i++){
@@ -40,6 +40,15 @@ io.on('connection',function(socket){
             }
         }
        
+    });
+    //remove chat items when user disconnects
+    socket.on('disconnect', function(socket) {
+        console.log("user at socket "+socket.id+" disconected")
+       for(i=0;i<chats.length;i++){
+           if(chats[i].socket_id==socket.id){
+              chats.pop(chats[i]) 
+           }
+       }
     });
 })
 

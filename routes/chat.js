@@ -145,33 +145,5 @@ sendMessage:(req, res)=>{
          
 },
 
-getMessages: (req, res) => {
-        let message='';
-        let chat_id=req.params.chat_id;
-        let chatQuery="SELECT * FROM `chats` WHERE chat_Id='"+chat_id+"'";
-        let getMessagesQuery="SELECT * FROM `messages` WHERE chat_Id='"+chat_id+"'";
-        user=req.cookies.user.user_id
-        db.query(chatQuery, (err, result_1) => {
-            if (err) {
-               console.log('Eror occured as:'+err);
-            }
-            let userQuery="SELECT * FROM `users` WHERE user_id='"+result_1[0].receiver_id+"'";
-            db.query(userQuery, (err, result_2) => {
-                if (err) {
-                   console.log('Eror occured as:'+err);
-                }
-                db.query(getMessagesQuery, (err, messages) => {
-                    if (err) {
-                       console.log('Eror occured as:'+err);
-                    }
-                
-                   res.send(messages)
-                })
-            })
-           
-          
-        }) 
-         
-    
-    },
+
 }
