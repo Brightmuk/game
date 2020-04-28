@@ -136,6 +136,13 @@ a:hover{
   margin:10px;
   display:flexbox
 }
+
+.avatar{
+  width:50px;
+  height:50px;
+  border-radius:50px
+}
+
 /* Smoke container */
 
 #smoke {

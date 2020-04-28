@@ -16,7 +16,7 @@ module.exports =function(app,passport){
     app.get('/login',userLoginPage);
     app.post('/signsup',userSignup);
     app.get('/signup',userSignupPage);
-    app.get('/setup_profile:user_id',isLoggedIn ,setupProfilePage)
+    app.get('/setup_profile',isLoggedIn ,setupProfilePage)
     app.post('/setup',isLoggedIn,setupProfile)
     app.get('/' ,isLoggedIn,getHomePage);
     //chat routes

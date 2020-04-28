@@ -5,8 +5,8 @@ module.exports = {
     getHomePage: (req, res) => {
         
         //  user=req.session.user.user_id
-        user=req.cookies.user.user_id
-        let userQuery="SELECT * FROM  users WHERE user_id= '"+ user +"'";
+        user=req.cookies.user
+        let userQuery="SELECT * FROM  users WHERE user_id= '"+ user.user_id +"'";
         db.query(userQuery, (err, result) => {
             if (err) {
                 console.log("error ocurred",err);
@@ -16,11 +16,11 @@ module.exports = {
                 });
               }else{
                 if(result[0].is_First_Time==true){
-                  res.redirect('/setup_profile'+user)
+                  res.redirect('/setup_profile')
                 }else{
                   message=""
                   res.render('index.ejs', {
-                  user_id:user,
+                  user:user,
                   title: 'Welcome muk games',
                   message:message
            })

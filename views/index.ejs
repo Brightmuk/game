@@ -1,4 +1,13 @@
 <%- include('partials/layout.ejs') -%>
+<div class="page-wrapper">
+    <nav class="navbar nav-default">
+        <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
+       
+        <a id="about"  href="/users">Users</a>
+        <a id="chats" href="/start"> campaign</a>
+       <img class="avatar" src="/images/<%= user.avatar %>">
+    </nav>
+  </div> 
 <div class="container">
     <% if (message != '') { %>
         <p class="text-center text-danger"><%= message %></p>
