@@ -17,11 +17,37 @@ const morgan=require('morgan');
 const LocalStrategy=require('passport-local').strategy;
 
 const FileStore = require('session-file-store')(session)
-io.sockets.on('connection',function(socket){
-    console.log('New user!');
+chats=[]
 
+io.on('connection',function(socket){
+    console.log('New user!',socket.id);
+    
+    socket.on("join-chat", function (chat_id,) {
+       let chat={
+            chat_id:chat_id,
+           socket_id:socket.id
+       } 
+       chats.push(chat)
+       console.log(chats)
+    });
 
+    socket.on("new_message", function (message,chat_id) {
+        console.log(chat_id)
+        for(i=0;i<chats.length;i++){
+            if(chats[i].chat_id==chat_id&&chats[i].socket_id!=socket.id){
+                console.log("Client "+ chat_id +" says", message);
+                socket.broadcast.to(chats[i].socket_id).emit("new_message",message)
+            }
+        }
+       
+    });
 })
+
+app.use(function (request, result, next) {
+	result.setHeader("Access-Control-Allow-Origin", "*");
+	next();
+});
+
 module.exports={io:"io"}
 const port = 8000;
 
@@ -66,6 +92,7 @@ app.use(cookieParser('dkjml-9i6j-2738'))
    
 // }));
 // routes for the app
+
 require('./routes.js')(app,passport);
 
 
