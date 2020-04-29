@@ -9,8 +9,8 @@ module.exports = {
 usersPage: (req, res) => {
        
         message=''
-        user_id=req.params.user_id;
-        let usersQuery = "SELECT * FROM `users`";
+        user=req.cookies.user;
+        let usersQuery = "SELECT * FROM `users` WHERE `user_id` NOT IN('"+user.user_id+"')";
         db.query(usersQuery , (err, result_1) => {
             if (err) {
                 console.log("error ocurred",err);
@@ -22,9 +22,11 @@ usersPage: (req, res) => {
                         
                     });
                 }else{
+                    
                     res.render('users.ejs', {
                         message:message,
-                        users:result_1
+                        users:result_1,
+                        user:user
                         
                     });
             }
@@ -33,6 +35,7 @@ usersPage: (req, res) => {
        
  
      },
+    
 
 newChat:(req, res,next) => {
    

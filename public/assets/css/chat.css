@@ -30,7 +30,8 @@
    margin-left:auto;
    margin-right:0;
    width:fit-content;
-  
+   max-width: 80%;
+   word-wrap: break-word;
 }
   
 #send-container{
@@ -74,4 +75,8 @@ h4{
     position:fixed;
     opacity:0.8;
     margin-top:10px;
+}
+.back{
+    width:20px;
+    height:20px
 }

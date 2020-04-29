@@ -7,8 +7,11 @@
        
        <span> <a id="about"  href="/users">Users</a></span>
        <span> <a id="about"  href="/">Chats</a></span>
-     
+      <% if(user.avatar){ %>
        <li ><img onclick=" dropDown()" class="avatar" src="/images/<%= user.avatar %>">
+        <%  }else{ %>
+            <img class="avatar" src="/images/default.png">
+            <% } %>
         <ul  id="dd" class="drop-down">
            
             <li style="margin-bottom:5px" >Settings</li>
@@ -34,7 +37,11 @@
     <% users.forEach((user, index) => { %>
         <a href="/newchat/<%=user.user_id%>">
         <div class="user">
+            <% if(user.avatar){ %>
         <img class="avatars" src="/images/<%= user.avatar %>">
+        <%  }else{ %>
+            <img class="avatars" src="/images/default.png">
+            <% } %>
         <h5><%= user.user_name %></h5>
         <span><%= user.email %></span>
         </div>

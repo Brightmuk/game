@@ -6,6 +6,7 @@ module.exports = {
         //  user=req.session.user.user_id
         user=req.cookies.user
         let userQuery="SELECT * FROM  users WHERE user_id= '"+ user.user_id +"'";
+        let chatsQuery="SELECT * FROM `chats` WHERE user_Id='"+user.user_id+"' OR receiver_id='"+user.user_id+"'";
         db.query(userQuery, (err, result) => {
             if (err) {
                 console.log("error ocurred",err);
@@ -17,11 +18,21 @@ module.exports = {
                 if(result[0].is_First_Time==true){
                   res.redirect('/setup_profile')
                 }else{
+                  db.query(chatsQuery, (err, result_2) => {
+                    if (err) {
+                        console.log("error ocurred",err);
+                        res.send({
+                          "code":400,
+                          "failed":"error ocurred"
+                        });
+                      }
                   message=""
                   res.render('index.ejs', {
                   user:user,
+                  chats:result_2,
                   title: 'Welcome muk games',
                   message:message
+                })
            })
           }
         }
