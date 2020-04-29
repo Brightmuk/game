@@ -4,7 +4,7 @@
         <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
        
        <span> <a id="about"  href="/users">Users</a></span>
-       <span> <a id="about"  href="/chats">Chats</a></span>
+       <span> <a id="about"  href="/">Chats</a></span>
      
        <li ><img onclick=" dropDown()" class="avatar" src="/images/<%= user.avatar %>">
         <ul  id="dd" class="drop-down">
@@ -17,6 +17,7 @@
     <li style="font-size:2px">.</li>
     </nav>
   </div> 
+  <h6 class="text-center head">Chats</h6>
 <div class="container">
     <% if (message != '') { %>
         <p class="text-center text-danger"><%= message %></p>

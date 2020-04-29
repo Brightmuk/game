@@ -1,16 +1,13 @@
 <%- include('partials/layout_2.ejs') -%>
 <link rel="stylesheet" href="css/chat.css">
 <script src="/socket.io/socket.io.js"></script>
+<nav style="padding-top:0" class="navbar nav-default">
+    <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
+    <img  class="avatar" src="/images/<%= receiver.avatar %>">
+   
+</nav>
 
-    <nav class="nav ">
-        
-       <li id="chats"> <a  href="/users"> < </a></li>
-        <img class="avatars" src="/images/<%= receiver.avatar %>">
-        <li id="about"  href=""><%= receiver.user_name %></li>
-       
-      
-    </nav>
-
+<h6 style="z-index:1" class="text-center head"><%= receiver.user_name %></h6>
 <div class="container-fluid">
    
     <hr>
@@ -41,7 +38,7 @@
     <form id="send-container">
         <input  id="message" type="text" name="sent_message" class="form-ctrl input-box"placeholder="text" required>
         <input id="chat_id"  style="display:none" value="<%= chat.chat_id %>" name="chat_id">
-        <button id="send-button" class="btn btn-primary">send</button>
+        <button id="send-button" class="btn btn-default">send</button>
 
     </form>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

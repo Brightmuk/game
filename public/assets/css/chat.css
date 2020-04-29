@@ -29,7 +29,8 @@
     margin:10px; 
    margin-left:auto;
    margin-right:0;
-   width:fit-content
+   width:fit-content;
+  
 }
   
 #send-container{
@@ -46,7 +47,8 @@
 }
 #send-button{
    color:white;
-   margin:0
+   margin:0;
+   background-color: black;
 }
 .back{
     font-weight: 100;
