@@ -1,17 +1,40 @@
-<%- include('partials/layout_2.ejs') -%>
+<%- include('partials/layout.ejs') -%>
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div class="page-wrapper">
+    <nav class="navbar nav-default">
+        <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
+       
+       <span> <a id="about"  href="/users">Users</a></span>
+       <span> <a id="about"  href="/chats">Chats</a></span>
+     
+       <li ><img onclick=" dropDown()" class="avatar" src="/images/<%= user.avatar %>">
+        <ul  id="dd" class="drop-down">
+           
+            <li style="margin-bottom:5px" >Settings</li>
+           
+            <li><a href="/logout">logout</a></li>
+        </ul>
+    </li>
+    <li style="font-size:2px">.</li>
+    </nav>
+  </div> 
+<h6 class="text-center head">Users</h6>
 <div class="container-fluid">
     <br>
     <% if (message != '') { %>
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
+    <br>
+    <hr>
+  
+       
    
-    <span class="back"><a href="/" ><</a> </span>
-    <h3 class="text-center">Users</h3>
- 
+   
     <% users.forEach((user, index) => { %>
         <a href="/newchat/<%=user.user_id%>">
         <div class="user">
+        <img class="avatars" src="/images/<%= user.avatar %>">
         <h5><%= user.user_name %></h5>
         <span><%= user.email %></span>
         </div>
@@ -19,6 +42,23 @@
         </a>
         
         <% }) %>
-        <i class="fas fa-cloud"></i>
-        <i style="color:white"class="fas fa-car"></i>
+      
 </div>
+<script>
+    var clicked=false
+      function dropDown(){
+          var list=document.getElementById('dd').style
+           if(clicked==false){
+             
+              list.display="block"
+              list.position="absolute"
+              list.width="22%"
+             
+             clicked=true
+          }else{
+             
+              list.display="none"
+              clicked=false
+          }
+      }
+  </script>

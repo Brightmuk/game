@@ -60,3 +60,16 @@ a{
 a:focus{
     color:white
 }
+h4{
+    margin-top:25px
+}
+.nav li{
+    display:inline-block;
+    margin:10px;
+    font-weight:500
+}
+.nav{
+    position:fixed;
+    opacity:0.8;
+    margin-top:10px;
+}

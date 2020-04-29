@@ -47,6 +47,21 @@ $(function(){
     }, 500)
   });
 });
-
+var clicked=false
+    function dropDown(){
+        var list=document.getElementById('dd').style
+         if(clicked==false){
+           
+            list.display="block"
+            list.position="absolute"
+            list.width="22%"
+           
+           clicked=true
+        }else{
+           
+            list.display="none"
+            clicked=false
+        }
+    }
 </script>
 

@@ -3,16 +3,25 @@
     <nav class="navbar nav-default">
         <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
        
-        <a id="about"  href="/users">Users</a>
-        <a id="chats" href="/start"> campaign</a>
-       <img class="avatar" src="/images/<%= user.avatar %>">
+       <span> <a id="about"  href="/users">Users</a></span>
+       <span> <a id="about"  href="/chats">Chats</a></span>
+     
+       <li ><img onclick=" dropDown()" class="avatar" src="/images/<%= user.avatar %>">
+        <ul  id="dd" class="drop-down">
+           
+            <li style="margin-bottom:5px" >Settings</li>
+           
+            <li><a href="/logout">logout</a></li>
+        </ul>
+    </li>
+    <li style="font-size:2px">.</li>
     </nav>
   </div> 
 <div class="container">
     <% if (message != '') { %>
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
-    <h3 class="text-center">Game zone</h3>
+    
  <br>
   
    
@@ -29,3 +38,21 @@
     <span class="s9"></span>
 </span>
 </div>
+<script>
+  var clicked=false
+    function dropDown(){
+        var list=document.getElementById('dd').style
+         if(clicked==false){
+           
+            list.display="block"
+            list.position="absolute"
+            list.width="22%"
+           
+           clicked=true
+        }else{
+           
+            list.display="none"
+            clicked=false
+        }
+    }
+</script>

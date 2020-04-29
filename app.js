@@ -43,7 +43,7 @@ io.on('connection',function(socket){
     });
     //remove chat items when user disconnects
     socket.on('disconnect', function(socket) {
-        console.log("user at socket "+socket.id+" disconected")
+        console.log("user at socket "+socket+" disconected")
        for(i=0;i<chats.length;i++){
            if(chats[i].socket_id==socket.id){
               chats.pop(chats[i]) 

@@ -1,15 +1,24 @@
 <%- include('partials/layout_2.ejs') -%>
 <link rel="stylesheet" href="css/chat.css">
 <script src="/socket.io/socket.io.js"></script>
+
+    <nav class="nav ">
+        
+       <li id="chats"> <a  href="/users"> < </a></li>
+        <img class="avatars" src="/images/<%= receiver.avatar %>">
+        <li id="about"  href=""><%= receiver.user_name %></li>
+       
+      
+    </nav>
+
 <div class="container-fluid">
+   
+    <hr>
+    <br>
     <br>
     <% if (message != '') { %>
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
-    <span class="back"><a href="/users" ><</a> </span>
-    <h4 class="text-center"><%= receiver.user_name %></h4>
-    <br>
-  
     <div id="messages" class="messages">
        
         <% messages.forEach((message, index) =>{%>

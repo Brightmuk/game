@@ -1,7 +1,6 @@
 
 module.exports = {
 
-    
     getHomePage: (req, res) => {
         
         //  user=req.session.user.user_id
@@ -24,12 +23,9 @@ module.exports = {
                   title: 'Welcome muk games',
                   message:message
            })
-                }
-              }
-              })
-        
-       
- 
+          }
+        }
+      })     
     },
 setupProfilePage: (req, res) => {
     
@@ -69,7 +65,7 @@ setupProfile:(req,res)=>{
 }
 },
 logout:(req,res)=>{
-    req.cookies.user.delete()
+    res.cookie("user",'')
     res.redirect('/login')
   }
 }
