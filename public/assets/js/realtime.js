@@ -2,7 +2,8 @@ var server = "http://localhost:8000";
 var socket = io(server);
 let chat_id=$("#chat_id").val()
 
-socket.emit("join-chat",chat_id)
+let user_id=$("#user_id").val()
+socket.emit("join-chat",chat_id,user_id)
 
 socket.on("new_message", function (message) {
 	addMessages(message)

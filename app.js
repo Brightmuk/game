@@ -21,13 +21,20 @@ chats=[]
 io.on('connection',function(socket){
     console.log('New user at socket ',socket.id);
     //user joining chat withtheir socket id
-    socket.on("join-chat", function (chat_id,) {
+    socket.on("join-chat", function (chat_id,user_id) {
+        for(i=0;i<chats.length;i++){
+            if(chats[i].user_id==user_id){
+               chats.pop(chats[i]) 
+            }
+        }
        let chat={
+           user_id:user_id,
             chat_id:chat_id,
            socket_id:socket.id
        } 
        chats.push(chat)
        console.log(chats)
+       
     });
    
     //message beign broadcasted to specific socket
@@ -42,13 +49,9 @@ io.on('connection',function(socket){
        
     });
     //remove chat items when user disconnects
-    socket.on('disconnect', function(socket) {
-        console.log("user at socket "+socket+" disconected")
-       for(i=0;i<chats.length;i++){
-           if(chats[i].socket_id==socket.id){
-              chats.pop(chats[i]) 
-           }
-       }
+    socket.on('disconnect', function(socket,user_id) {
+        console.log("user at socket  disconected")
+    
     });
 })
 
