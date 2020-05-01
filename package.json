@@ -9,7 +9,7 @@
               },
   "scripts": {
     "test": "test-app",
-    "start": "node index.js",
+    "start": "node app.js",
     "build": "webpack",
     "pwa": "create-pwa --icon=\"icons/Bright-logo4.png\" --launch=\"icons/Bright-logo4.png\""
   },
