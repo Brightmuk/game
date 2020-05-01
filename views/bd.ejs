@@ -1,0 +1,27 @@
+<%- include('partials/layout.ejs') -%>
+
+
+<body class="contain">
+   
+<p class="typing anim-typewriter">Designed by Bright Muk</p>
+  
+  </div>
+  <script>
+      function redirect(){
+        $.ajax({
+            type:"post",
+            url:'http://localhost:8000/send',
+            data:{
+               sent_message:$("#message").val(),
+               chat_id:$("#chat_id").val(),
+               
+            },
+            success: addMyMessages(message),
+            error: function (request, status, error) {
+               console.log(error);}
+            
+        })   
+      }
+   </script>
+</body>
+ 

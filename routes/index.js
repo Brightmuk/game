@@ -75,6 +75,11 @@ setupProfile:(req,res)=>{
     });
 }
 },
+brightDesigns:(req,res)=>{
+  res.render('bd.ejs',{
+    message:''
+  })
+},
 logout:(req,res)=>{
     res.cookie("user",'')
     res.redirect('/login')

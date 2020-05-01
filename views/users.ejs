@@ -1,9 +1,10 @@
 <%- include('partials/layout.ejs') -%>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div id="toHide">
 <div class="page-wrapper">
     <nav class="navbar nav-default">
-        <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
+        <a href="/bd"> <span  class="logo" ><span id="capt">B</span>right<span id="capt">D</span>esigns</span></a>
        
        <span> <a id="about"  href="/users">Users</a></span>
        <span> <a id="about"  href="/">Chats</a></span>
@@ -50,6 +51,7 @@
         
         <% }) %>
       
+</div>
 </div>
 <script>
     var clicked=false
