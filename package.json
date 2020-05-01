@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "game app",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.x",
+    "npm": "6.x"
+              },
   "scripts": {
     "test": "test-app",
+    "start": "node index.js",
+    "build": "webpack",
     "pwa": "create-pwa --icon=\"icons/Bright-logo4.png\" --launch=\"icons/Bright-logo4.png\""
   },
   "repository": {
