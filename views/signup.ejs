@@ -1,7 +1,6 @@
 <%- include('partials/layout_2.ejs') -%>
 <nav  class="navbar nav-default">
   <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
- 
 </nav>
 <div class="container">
     <% if (message != '') { %>
@@ -12,12 +11,10 @@
    
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" name="email" class="form-ctrl" placeholder="Email address" required autofocus>
-    
    
     <label for="inputUsername" class="sr-only">Username</label>
     <input type="text" id="inputUsername" name="username" class="form-ctrl" placeholder="Username" required>
   
-   
     <label for="inputPassword" class="sr-only">Password</label>
     <input onkeyup="checkPassValid()" type="password" id="inputPassword" name="password" class="form-ctrl" placeholder="Password" required>
     <span id="valid"></span>
@@ -27,13 +24,11 @@
     <span id="match"></span>
 <br>
     <br/>
-   
     <button class="btn btn-sm btn-primary" type="submit"> Signup</button><br>
     <small>Have an account. <a href="/login"> Signin</a></small>
   </form>
   </div>
-  <script>
-        
+  <script> 
       function checkPasswordMatch(){
         var pass_1=$("#inputPassword").val();
         var pass_2=$("#inputConfirmPassword").val();
@@ -41,19 +36,15 @@
             var ele=document.getElementById('match')
             ele.innerHTML='!'
             ele.style.color="red"
-           
         }else{
             var ele=document.getElementById('match')
             ele.innerHTML='$'
             ele.style.color="green"
         }
-       
       }
       function checkPassValid(){
         var pass_1=$("#inputPassword").val();
-        
-          if(pass_1.length<8){
-             
+          if(pass_1.length<8){ 
             var ele=document.getElementById('valid')
             ele.innerHTML='!'
             ele.style.color="red"

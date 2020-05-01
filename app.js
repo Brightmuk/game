@@ -11,11 +11,7 @@ const path = require('path');
 const passport = require('passport')
 const session = require('express-session');
 const ejs = require('ejs');
-const expressSession = require('express-session');
-const morgan=require('morgan');
-const LocalStrategy=require('passport-local').strategy;
 
-const FileStore = require('session-file-store')(session)
 chats=[]
 
 io.on('connection',function(socket){

@@ -1,10 +1,8 @@
 <%- include('partials/layout_2.ejs') -%>
 <nav  class="navbar nav-default">
   <span class="logo" ><a style="color:white;text-decoration: none;" href="/"><span id="capt">B</span>right<span id="capt">D</span>esigns</a></span>
- 
 </nav>
 <div class="container">
-  
    
 <form class="form-signin" action="/logsin" method="post" enctype="multipart/form-data">
     <% if (message != '') { %>
@@ -14,17 +12,14 @@
    
     <label for="input username" class="sr-only">Username</label>
     <input type="text" id="username" name="username" class="form-ctrl" placeholder="Username" required autofocus>
-  
- 
+
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="password" name="password" class="form-ctrl" placeholder="Password" required>
-  
     <br/>
     <br>
     <button class="btn btn-sm btn-primary" type="submit">Sign In</button><br>
     <small>Dont have an account. <a href="/signup"> Signup</a></small>
   </form>
-  
   </div>
 </div>
  

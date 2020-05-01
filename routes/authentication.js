@@ -3,12 +3,10 @@ const passport = require('passport')
 
 //password hashing
 const bcrypt = require('bcryptjs')
-
 function hashPassword (password) {
     let hash = bcrypt.hashSync(password, 10);
     return hash
   }
-
 module.exports={
 
     userLoginPage: (req, res) => {
@@ -16,11 +14,9 @@ module.exports={
         res.render('login.ejs', {
            
             message:''
-     
     });
     },
     userLogin:(req, res)=>{
-       
         let message='';
         let username=req.body.username;
         let enteredPassword=req.body.password;
@@ -48,19 +44,16 @@ module.exports={
                     res.render('login.ejs', {
                         message:'Username and password do not match'
                  
-                });
-                   
+                });  
                         
                   }
                 }
                 else{
                     res.render('login.ejs', {
                         message:'Username does not exist'
-                 
                 });
                 }}
         });
-
 
     },
     userSignupPage: (req, res) => {

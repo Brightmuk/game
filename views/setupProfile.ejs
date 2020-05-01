@@ -1,21 +1,15 @@
 <%- include('partials/layout_2.ejs') -%>
-
 <div class="container">
-  
-   
 <form class="form-signin" action="/setup" method="post" enctype="multipart/form-data">
     <% if (message != '') { %>
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
-  
     <input type="file" name="image" id="file" class="inputfile" />
     <label for="file">Choose a file</label>
     <br/>
     <br>
-    <button class="btn btn-sm btn-primary" type="submit">submit</button><br>
-    
+    <button class="btn btn-sm btn-primary" type="submit">submit</button><br> 
   </form>
-  
   </div>
 </div>
  

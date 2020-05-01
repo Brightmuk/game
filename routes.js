@@ -20,7 +20,6 @@ module.exports =function(app,passport){
     app.post('/setup',isLoggedIn,setupProfile);
     app.get('/' ,isLoggedIn,getHomePage);
     app.get('/bd',isLoggedIn,brightDesigns);
-   
     //chat routes
     app.get('/newchat/:receiver_id',isLoggedIn,newChat);
     app.get('/chat:chat_id:receiver_id',isLoggedIn,oneChat);
