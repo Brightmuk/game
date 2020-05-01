@@ -80,6 +80,7 @@ brightDesigns:(req,res)=>{
     message:''
   })
 },
+
 logout:(req,res)=>{
     res.cookie("user",'')
     res.redirect('/login')

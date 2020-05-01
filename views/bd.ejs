@@ -8,20 +8,11 @@
   </div>
   <script>
       function redirect(){
-        $.ajax({
-            type:"post",
-            url:'http://localhost:8000/send',
-            data:{
-               sent_message:$("#message").val(),
-               chat_id:$("#chat_id").val(),
-               
-            },
-            success: addMyMessages(message),
-            error: function (request, status, error) {
-               console.log(error);}
-            
-        })   
+        setTimeout(function(){ 
+            window.history.back()
+         }, 5500);
       }
+      redirect()
    </script>
 </body>
  
