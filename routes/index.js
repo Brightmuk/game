@@ -5,8 +5,9 @@ module.exports = {
         
         //  user=req.session.user.user_id
         user=req.cookies.user
+        console.log(user)
         let userQuery="SELECT * FROM  users WHERE user_id= '"+ user.user_id +"'";
-        let chatsQuery="SELECT * FROM `chats` WHERE user_Id='"+user.user_id+"' OR receiver_id='"+user.user_id+"'";
+        let chatsQuery="SELECT * FROM chats WHERE user_Id='"+user.user_id+"' OR receiver_id='"+user.user_id+"'";
         db.query(userQuery, (err, result) => {
             if (err) {
                 console.log("error ocurred",err);
@@ -15,7 +16,8 @@ module.exports = {
                   "failed":"error ocurred"
                 });
               }else{
-                if(result[0].is_First_Time==true){
+                 console.log(result.rows)
+                if(result.rows[0].is_First_Time==true){
                   res.redirect('/setup_profile')
                 }else{
                   db.query(chatsQuery, (err, result_2) => {
@@ -29,7 +31,7 @@ module.exports = {
                   message=""
                   res.render('index.ejs', {
                   user:user,
-                  chats:result_2,
+                  chats:result_2.rows,
                   title: 'Welcome muk games',
                   message:message
                 })
@@ -54,7 +56,7 @@ setupProfile:(req,res)=>{
   let fileExtension = uploadedFile.mimetype.split('/')[1];
   image_name = user.user_name + '.' + fileExtension;
 
-  let setAvatarQuery="UPDATE `users` SET `avatar`='"+ image_name +"',`is_First_Time`=false WHERE user_name='"+ user.user_name +"'";
+  let setAvatarQuery="UPDATE users SET avatar='"+ image_name +"',`is_First_Time`=false WHERE user_name='"+ user.user_name +"'";
 
   if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
       uploadedFile.mv(`public/assets/images/${image_name}`, (err ) => {

@@ -30,12 +30,12 @@ module.exports={
                   "failed":"error ocurred"
                 });
               }else{
-               
-                if(result.length >0){
+                
+                if(result.rows.length >0){
                   
-                  if(bcrypt.compareSync(enteredPassword,result[0].password) ){
+                  if(bcrypt.compareSync(enteredPassword,result.rows[0].password) ){
                      
-                      res.cookie("user",result[0])
+                      res.cookie("user",result.rows[0])
                       console.log(req.cookies);
                     res.redirect('/')
                    console.log('Im in')
@@ -79,12 +79,12 @@ module.exports={
             });
         }else{
        
-        let usernameQuery = "SELECT * FROM `users` WHERE user_name = '" + username + "'";
+        let usernameQuery = "SELECT * FROM users WHERE user_name = '" + username + "'";
         db.query(usernameQuery, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
-            if (result.length > 0) {
+            if (result.rows.length > 0) {
                 message = 'Username already exists';
                 res.render('signup.ejs', {
                     message
@@ -93,10 +93,11 @@ module.exports={
             } else {
                 let hashed_pass=hashPassword (password);
 
-                let query = "INSERT INTO `users` (email, password, user_name, is_First_Time) VALUES ('" +
+                let query = "INSERT INTO users (email, password, user_name, is_First_Time) VALUES ('" +
                 email + "', '" + hashed_pass + "',  '" + username + "',true)";
             db.query(query, (err, result) => {
                 if (err) {
+                    console.log(err)
                     return res.status(500).send(err);
                 }
                 res.redirect('/');

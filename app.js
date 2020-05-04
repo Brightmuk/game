@@ -1,12 +1,11 @@
 var express = require('express');
 var app = express();
-
 var server = require('http').createServer(app)
 var io = require('socket.io').listen(server);
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const mysql = require('mysql');
+const pg = require('pg');
 const path = require('path');
 const passport = require('passport')
 const session = require('express-session');
@@ -58,24 +57,15 @@ app.use(function (request, result, next) {
 
 module.exports={io:"io"}
 const port = 8000;
-
-// create connection to database
-// the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-const db = mysql.createConnection ({
+//connect  to database
+const db = new pg.Pool({
+    user: 'postgres',
     host: 'localhost',
-    user: 'bright',  
+    database: 'game',
     password: 'beatsbydre',
-    database: 'game'
+    port: '5432'
 });
 
-
-// connect to database
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
-});
 global.db = db;
 
 // configure middleware
@@ -92,13 +82,7 @@ app.use(passport.session())
 //secret cookie signing
 app.use(cookieParser('dkjml-9i6j-2738'))
 
-// app.use(session({
-//     name:'session-id',
-//     secret:'38cjkn20kmksalcnln23',
-//     saveUninitialized:false,
-//     resave:false,
-   
-// }));
+
 // routes for the app
 
 require('./routes.js')(app,passport);
