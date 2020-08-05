@@ -29,7 +29,7 @@
     "cookie-parser": "^1.4.5",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.7-alpha.2",
+    "express-fileupload": "^1.1.9",
     "express-session": "^1.17.0",
     "http": "0.0.1-security",
     "mysql": "^2.18.1",
